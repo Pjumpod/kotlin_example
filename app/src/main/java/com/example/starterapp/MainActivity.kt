@@ -1,5 +1,6 @@
 package com.example.starterapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -23,23 +24,41 @@ class MainActivity : AppCompatActivity() {
         // Get the text view
         val showCountTextView = findViewById<TextView>(R.id.textView)
         // Get the value of the text view.
-        var countString:String
+        var countString:String = showCountTextView.text.toString()
         var countint: Int
         //Toast.makeText(this,showCountTextView.text.toString(),Toast.LENGTH_LONG).show()
 
         try {
-            countString = showCountTextView.text.toString()
             countint = Integer.parseInt(countString)
         } catch(e: Exception) {
-            countString = "0"
             countint = 0
         }
-
-        // Convert value to a number and increment it
 
         countint++
 
         // Display the new value in the text view.
         showCountTextView.text = countint.toString()
+    }
+
+    fun randomMe (view: View) {
+        // Create an Intent to start the second activity
+        val randomIntent = Intent(this, SecondActivity::class.java)
+
+        // Get the current value of the text view.
+        val countString = findViewById<TextView>(R.id.textView).text.toString()
+
+        // Convert the count to an int
+        var count: Int
+        try {
+            count = Integer.parseInt(countString)
+        } catch(e: Exception) {
+            count = 0
+        }
+
+        // Add the count to the extras for the Intent.
+        randomIntent.putExtra(SecondActivity.TOTAL_COUNT, count)
+
+        // Start the new activity.
+        startActivity(randomIntent)
     }
 }
