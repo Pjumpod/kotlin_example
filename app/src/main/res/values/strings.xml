@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">StarterApp</string>
+    <string name="B1">Toast</string>
+    <string name="B2">Count</string>
+    <string name="B3">Random</string>
+    <string name="hello_world_text">Hello world!</string>
+</resources>
